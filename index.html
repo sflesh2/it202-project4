@@ -31,13 +31,18 @@
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
           <span class="mdc-list-item__text">Home</span>
         </a>
+        <a class="mdc-list-item" id="add" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">queue</i>
+          <span class="mdc-list-item__text">Tracked Countries</span>
+        </a>
         <a class="mdc-list-item" id="data" href="#">
           <i class="material-icons mdc-list-item__graphic"  aria-hidden="true">emoji_objects</i>
           <span class="mdc-list-item__text">Data</span>
         </a>
-        <a class="mdc-list-item" id="about" href="#">
-          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">info</i>
-          <span class="mdc-list-item__text">About</span>
+       
+        <a class="mdc-list-item" id="charts" href="#">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">poll</i>
+            <span class="mdc-list-item__text">Charts</span>
         </a>
       </nav>
     </div>
@@ -54,7 +59,7 @@
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
       <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Download">file_download</button>
       <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button>
-      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Bookmark this page">bookmark</button>
+      <button id="refresh" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="refresh">refresh</button>
     </section>
   </div>
 </header>
@@ -62,24 +67,41 @@
 
 
   <main class="mdc-top-app-bar--fixed-adjust">
-
-    <!--   This is a demo of a basic button
-    <button class="mdc-button foo-button mdc-button--raised">
-    <div class="mdc-button__ripple"></div>
-    <span class="mdc-button__label">Button</span>
-    </button>
-    -->
+    
       
-    <div class="page page-home" id="Home">
+    
+      <div class="page page-home" id="Home">
       <p>home</p>
     </div>
       
     <div class="page page-data" id="Data">
       <p>data</p>
     </div>
+        
+    <div class="page page-add" id="Add">
+        <h1 class="title">Tracked Countries</h1>
+        <option class="option-template" value="">None</option>
+        <div class="select-form">
+            <label class="add-label" for="country">Select Country:</label>
+            <select id="country" name="country">
+                <option value="US">United States</option>
+            </select><br/>    
+             <button class="mdc-button add-button mdc-button--raised"/>
+             <div class="mdc-button__ripple"></div>
+             <span class="mdc-button__label">Add</span>
+        </div>
+        <div class="tracked-list">
+              <li onclick="select(this)"onmouseover="hover(this)" onmouseout="hoverOff(this)" class="template-list-item list-item">Test</li>
+           <ul class="country-list">
+             
+            </ul>
+        </div>
+        
+        
+    </div>
       
-    <div class="page page-about" id="About">
-      <p>about</p>
+    <div class="page page-charts" id="Charts">
+       <p>Charts</p>    
     </div>
       
   </main>
@@ -87,7 +109,7 @@
 
   <script>
     
-     //mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+    mdc.ripple.MDCRipple.attachTo(document.querySelector('.add-button'));
 
     mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('header.mdc-top-app-bar'));
 
@@ -104,13 +126,9 @@
        item.addEventListener("click", even => {
            let target = item.id;
            
-           let list = [];
-           list.push(document.querySelector("#Home"));
-           list.push(document.querySelector("#Data")); 
-           list.push(document.querySelector("#About"));
-          
-           for(i of list){
-               i.style = "display:none;";    
+           let pages = document.querySelectorAll(".page"); 
+           for(page of pages){
+               page.style = "display:none;"
            }
            
            if(target == "home"){
@@ -120,12 +138,16 @@
            }else if(target == "data"){
                document.querySelector("#Data").style = "display:block";
                
-           }else if(target == "about"){
-               document.querySelector("#About").style = "display:block";
+           }else if(target == "add"){
+               document.querySelector("#Add").style = "display:block";
+           }else if(target == "charts"){
+               document.querySelector("#Charts").style = "display:block";
            }
            drawer.open = false;
        });
     });
+
     </script>
+    <script src="./js/tracker.js"></script>  
   </body>
 </html>

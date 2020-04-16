@@ -14,3 +14,74 @@
 .mdc-drawer--modal{
     margin-top : 65px;
 }
+
+.option-template{
+    display : none;
+}
+
+.page-add{
+    text-align: center;    
+}
+
+.select-form{
+    position: fixed; 
+    left: 25%;
+    right: 25%;
+    top:25%;
+    border-radius: 10px;
+    width: 50%; 
+    height: 13%;
+    border-color : black; 
+    border-width : 2px; 
+    border-style: solid;
+    text-align: center;  
+    background-color: whitesmoke;
+}
+
+.title{
+   position: fixed; 
+   left: 25%;
+   right: 25%; 
+   font-family: georgian;
+}
+
+.tracked-list{
+    position: fixed;
+    left: 25%; 
+    right: 25%; 
+    top:40%; 
+    border-radius: 10px; 
+    width: 50%; 
+    height: 50%;
+    border-color: black; 
+    border-width: 2px; 
+    border-style: solid; 
+    text-align: center; 
+    background-color: whitesmoke;
+}
+.add-button{
+    margin-top: 1%;
+    width : 10%;
+}
+
+.country-list{
+    list-style: none;
+    list-style-position: middle;
+    width:70%;
+    margin: auto;
+    padding: 0;
+}
+
+#country{
+    width: 25%;    
+}
+
+.list-item{
+    margin: auto;
+    text-align: middle;
+}
+
+.template-list-item{
+    display: none;
+}
+
