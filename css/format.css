@@ -1,0 +1,16 @@
+.page {
+    padding-top : 0;
+    margin-left : 10%;
+    display : none;
+}
+
+.mdc-top-app-bar {
+    margin : 0; 
+    padding : 0;
+    width : 100%;
+    background : lightseagreen; 
+}
+
+.mdc-drawer--modal{
+    margin-top : 65px;
+}
