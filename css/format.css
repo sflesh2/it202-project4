@@ -56,7 +56,7 @@
     border-color: black; 
     border-width: 2px; 
     border-style: solid; 
-    text-align: center; 
+  
     background-color: whitesmoke;
 }
 .add-button{
@@ -83,5 +83,13 @@
 
 .template-list-item{
     display: none;
+}
+
+.button-list{
+    position: fixed; 
+    top: 93%;
+    left: 40%; 
+    right: 40%; 
+    
 }
 

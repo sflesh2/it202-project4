@@ -23,7 +23,7 @@ document.querySelector("#refresh").addEventListener("click", (e)=>{
 let selection = null;
 
 let hover=(e)=>{
-    if(selection == null){
+    if(selection == null || selection != e){
          e.style.backgroundColor = "lightCyan";
          e.style.borderWidth = "1px";
          e.style.borderStyle = "solid"; 
@@ -33,7 +33,7 @@ let hover=(e)=>{
 }
 
 let hoverOff=(e)=>{
-    if(selection == null){
+    if(selection == null || selection != e){
          e.style.backgroundColor = "whitesmoke";
          e.style.borderStyle = "none"; 
     }
@@ -64,16 +64,30 @@ let select=(e)=>{
     
 }
 
+document.querySelector(".remove-button").addEventListener("click", (e)=>{
+        if(selection == null){
+            alert("A country must be selected to remove it");
+        }else{
+            //trackedNations.remove(selection.value);
+            trackedNations.splice(trackedNations.indexOf(selection.id),1); 
+            document.querySelector(".country-list").removeChild(selection);
+            selection = null;
+            console.log(trackedNations);
+        }
+});
+
 document.querySelector(".add-button").addEventListener("click", (e)=>{
     let s = document.querySelector("#country").value;
     let clone=document.querySelector(".template-list-item").cloneNode(true); 
     clone.classList.remove("template-list-item");
-    clone.textContent = s; 
+    clone.textContent = s;
+    clone.id=s;
     if(trackedNations.includes(s)){
         alert(s + " is already being tracked!");
     }else{
         document.querySelector(".country-list").appendChild(clone);
         trackedNations.push(s);
+        
     }
     
 });

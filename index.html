@@ -80,11 +80,11 @@
         
     <div class="page page-add" id="Add">
         <h1 class="title">Tracked Countries</h1>
-        <option class="option-template" value="">None</option>
+      
         <div class="select-form">
             <label class="add-label" for="country">Select Country:</label>
             <select id="country" name="country">
-                <option value="US">United States</option>
+                  <option class="option-template" value="">None</option>
             </select><br/>    
              <button class="mdc-button add-button mdc-button--raised"/>
              <div class="mdc-button__ripple"></div>
@@ -95,6 +95,11 @@
            <ul class="country-list">
              
             </ul>
+        </div>
+        <div class="button-list">
+            <button class="mdc-button remove-button mdc-button--raised"/>
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">remove</span>
         </div>
         
         
@@ -110,7 +115,9 @@
   <script>
     
     mdc.ripple.MDCRipple.attachTo(document.querySelector('.add-button'));
+    mdc.ripple.MDCRipple.attachTo(document.querySelector('.remove-button'));
 
+      
     mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('header.mdc-top-app-bar'));
 
     const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
