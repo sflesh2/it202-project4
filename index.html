@@ -69,42 +69,79 @@
   <main class="mdc-top-app-bar--fixed-adjust">
     
       
-    
-      <div class="page page-home" id="Home">
+    <!-- This is the page that displays overview information of the virus -->
+    <div class="page page-home" id="Home">
       <p>home</p>
     </div>
-      
+    
+    <!-- Displays the charts of data to the user--> 
     <div class="page page-data" id="Data">
-      <p>data</p>
+      <div class ="main-table">
+          <div class="mdc-data-table">
+              <table class="mdc-data-table__table" aria-label="Covid-19 Cases">
+                <thead>
+                  <tr class="mdc-data-table__header-row">
+                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Country</th>
+                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Confirmed</th>
+                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Deaths</th>
+                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Recovered</th>
+                    <!--th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Time</th-->
+                    <!--th class="mdc-data-table__header-cell" role="columnheader" scope="col">Roles</th-->
+                  </tr>
+                </thead>
+                <tbody class="mdc-data-table__content">
+
+                  <tr data-row-id="" class="mdc-data-table__row template-row">
+                    <td class="mdc-data-table__cell template-cell"></td>
+                    <!--td class="mdc-data-table__cell">Online</td>
+                    <td class="mdc-data-table__cell">Arcus watch slowdown</td>
+                    <td class="mdc-data-table__cell">Medium</td>
+                    <td class="mdc-data-table__cell">Triaged</td-->
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
     </div>
-        
+    
+    <!--Allows the user to add new countries to be tracked-->
     <div class="page page-add" id="Add">
         <h1 class="title">Tracked Countries</h1>
       
         <div class="select-form">
             <label class="add-label" for="country">Select Country:</label>
-            <select id="country" name="country">
+            <input id="selector" list = "country">
+            <datalist id="country" name="country">
                   <option class="option-template" value="">None</option>
-            </select><br/>    
+            </datalist><br/>    
              <button class="mdc-button add-button mdc-button--raised"/>
              <div class="mdc-button__ripple"></div>
              <span class="mdc-button__label">Add</span>
         </div>
         <div class="tracked-list">
-              <li onclick="select(this)"onmouseover="hover(this)" onmouseout="hoverOff(this)" class="template-list-item list-item">Test</li>
            <ul class="country-list">
-             
-            </ul>
+             <li onclick="select(this)"onmouseover="hover(this)" onmouseout="hoverOff(this)" class="template-list-item list-item">Test</li>
+           </ul>
         </div>
         <div class="button-list">
+            <button class="mdc-button data-button mdc-button--raised"/>
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Data</span>
+            
+            <button class="mdc-button clear-button mdc-button--raised"/>
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Clear</span>
+            
             <button class="mdc-button remove-button mdc-button--raised"/>
             <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">remove</span>
+            <span class="mdc-button__label">Remove</span>
         </div>
         
         
     </div>
-      
+     
+    <!-- charts the data that is listed in the "data page" --> 
     <div class="page page-charts" id="Charts">
        <p>Charts</p>    
     </div>
@@ -116,6 +153,8 @@
     
     mdc.ripple.MDCRipple.attachTo(document.querySelector('.add-button'));
     mdc.ripple.MDCRipple.attachTo(document.querySelector('.remove-button'));
+    mdc.ripple.MDCRipple.attachTo(document.querySelector('.clear-button'));
+    mdc.ripple.MDCRipple.attachTo(document.querySelector('.data-button'));
 
       
     mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('header.mdc-top-app-bar'));
@@ -128,31 +167,7 @@
           (e) => {drawer.open = true;}
       );
       
-    document.querySelectorAll("aside.mdc-drawer a.mdc-list-item").forEach(item=>{
-         
-       item.addEventListener("click", even => {
-           let target = item.id;
-           
-           let pages = document.querySelectorAll(".page"); 
-           for(page of pages){
-               page.style = "display:none;"
-           }
-           
-           if(target == "home"){
-              document.querySelector("#Home").style = "display:block";
-               
-               
-           }else if(target == "data"){
-               document.querySelector("#Data").style = "display:block";
-               
-           }else if(target == "add"){
-               document.querySelector("#Add").style = "display:block";
-           }else if(target == "charts"){
-               document.querySelector("#Charts").style = "display:block";
-           }
-           drawer.open = false;
-       });
-    });
+    
 
     </script>
     <script src="./js/tracker.js"></script>  

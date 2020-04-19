@@ -19,6 +19,7 @@
     display : none;
 }
 
+
 .page-add{
     text-align: center;    
 }
@@ -86,10 +87,49 @@
 }
 
 .button-list{
+    display: flex;
     position: fixed; 
-    top: 93%;
-    left: 40%; 
-    right: 40%; 
+    top: 95%;  
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.remove-button{
+    margin: 1%;
+}
+
+.clear-button{
+    margin: 1%;
+}
+
+.data-button{
+    margin: 1%;
+}
+
+.mdc-data-table{
+    display: block;
+    position: fixed; 
+    left: 50%;
+    top:30%;
+    transform: translate(-50%);
+}
+.main-table{
+    display: block;
+    position: fixed; 
+    left: 50%;
+    top:25%;
+    transform: translate(-50%);
+}
+.mdc-data-table__header-row{
+    background-color: whitesmoke;
+}
+
+.template-cell{
+    display:none;
+}
+
+
+.template-row{
     
 }
 
