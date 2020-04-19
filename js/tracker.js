@@ -231,12 +231,8 @@ function getRandomColor() {
 function drawChart() {
             // Define the chart to be drawn.
             var data = new google.visualization.DataTable();
-            /*data.addColumn('string', 'Month');
-            data.addColumn('number', 'Tokyo');
-            data.addColumn('number', 'New York');
-            data.addColumn('number', 'Berlin');
-            data.addColumn('number', 'London');
-            */
+            let option = document.querySelector("#type-selector");
+            console.log(option.value);
             data.addColumn('string', 'date');
             for(let c of trackedNations){
                 data.addColumn('number', c);
@@ -267,6 +263,7 @@ function drawChart() {
                },   
                'width':550,
                'height':400	  
+                
             };
 
             // Instantiate and draw the chart.

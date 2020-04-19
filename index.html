@@ -143,7 +143,17 @@
      
     <!-- charts the data that is listed in the "data page" --> 
     <div class="page page-charts" id="Charts">
+        <h1 class="title graph-title">Graphs</h1>
         <div id="chart_div" style = "width: 550px; height: 400px; margin: 0 auto"></div>
+        <div class="type-select-div">
+        <label class="type-label" for="country">Select info:</label>
+        <input id="type-selector" list = "type" oninput="drawChart()">
+            <datalist id="type" name="type">
+                  <option class="type-option" value="confirmed">confirmed</option>
+                  <option class="type-option" value="recovered">recovered</option>
+                  <option class="type-option" value="deaths">deaths</option>
+            </datalist><br/>  
+        </div>
     </div>
       
   </main>
