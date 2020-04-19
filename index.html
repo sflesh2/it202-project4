@@ -143,7 +143,7 @@
      
     <!-- charts the data that is listed in the "data page" --> 
     <div class="page page-charts" id="Charts">
-       <p>Charts</p>    
+        <div id="chart_div" style = "width: 550px; height: 400px; margin: 0 auto"></div>
     </div>
       
   </main>
@@ -170,6 +170,10 @@
     
 
     </script>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+       <script type = "text/javascript">
+         google.charts.load('current', {packages: ['corechart','line']});  
+      </script>
     <script src="./js/tracker.js"></script>  
   </body>
 </html>

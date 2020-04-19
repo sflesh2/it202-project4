@@ -217,3 +217,59 @@ fetch("https://pomber.github.io/covid19/timeseries.json")
         menu.appendChild(clone);
     }
 });
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}    
+
+
+function drawChart() {
+            // Define the chart to be drawn.
+            var data = new google.visualization.DataTable();
+            /*data.addColumn('string', 'Month');
+            data.addColumn('number', 'Tokyo');
+            data.addColumn('number', 'New York');
+            data.addColumn('number', 'Berlin');
+            data.addColumn('number', 'London');
+            */
+            data.addColumn('string', 'date');
+            for(let c of trackedNations){
+                data.addColumn('number', c);
+            }
+            
+            let allRows = [];
+            let baseLine = allData[trackedNations[0]];
+            let i = 0; 
+            let stat = "confirmed";
+            for(let dates of baseLine){
+                let row = []; 
+                row.push(dates.date);
+                for(let n of trackedNations){
+                    row.push(allData[n][i][stat])
+                }
+                i+=1;
+                allRows.push(row);
+            }
+            data.addRows(allRows);
+               
+            // Set chart options
+            var options = {'title' : "Virus " + stat,
+               hAxis: {
+                  title: 'Date'
+               },
+               vAxis: {
+                  title: stat
+               },   
+               'width':550,
+               'height':400	  
+            };
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+}
