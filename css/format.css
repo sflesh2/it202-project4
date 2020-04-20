@@ -179,12 +179,16 @@
     top:40%; 
     border-radius: 10px; 
     width: 50%; 
-    height: 25%;
+    height: 40%;
     border-color: black; 
     border-width: 2px; 
     border-style: solid; 
   
     background-color: whitesmoke;
+}
+
+.display{
+    margin-top: 10%; 
 }
 
 
