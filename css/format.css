@@ -28,6 +28,10 @@
     text-align: center;
 }
 
+.page-data{
+    text-align: center;
+}
+
 .select-form{
     position: fixed; 
     left: 25%;
@@ -109,6 +113,13 @@
     transform: translate(-50%, -50%);
 }
 
+.graph-button{
+     display: flex;
+    position: fixed; 
+    top: 95%;  
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .remove-button{
     margin: 1%;
 }
@@ -149,7 +160,31 @@
     position: fixed; 
     top: 25%;
     left: 50%;
+    width: 100%;
     transform: translate(-50%);
+}
+
+.type-button{
+    margin: 1%;
+}
+
+#Home{
+    text-align: center; 
+}
+
+.home-data{
+     position: fixed;
+    left: 25%; 
+    right: 25%; 
+    top:40%; 
+    border-radius: 10px; 
+    width: 50%; 
+    height: 25%;
+    border-color: black; 
+    border-width: 2px; 
+    border-style: solid; 
+  
+    background-color: whitesmoke;
 }
 
 

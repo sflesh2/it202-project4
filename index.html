@@ -56,11 +56,11 @@
       <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
       <span class="mdc-top-app-bar__title">Covid-19 Tracker</span>
     </section>
-    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+    <!--section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
       <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Download">file_download</button>
       <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button>
       <button id="refresh" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="refresh">refresh</button>
-    </section>
+    </section-->
   </div>
 </header>
 
@@ -71,12 +71,19 @@
       
     <!-- This is the page that displays overview information of the virus -->
     <div class="page page-home" id="Home">
-      <p>home</p>
+       <h1 class="title home-title">World Data</h1>
+       <div class= "home-data">
+           <h2 class="" id="confirmed-display">Confirmed: </h2>
+           <h2 class="" id="deaths-display">Deaths: </h2>
+           <h2 class="" id="recovered-display">Recovered: </h2>
+       </div>
+       
     </div>
     
     <!-- Displays the charts of data to the user--> 
     <div class="page page-data" id="Data">
-      <div class ="main-table">
+      <h1 class="title data-title">Data Tables</h1>
+       <div class ="main-table">
           <div class="mdc-data-table">
               <table class="mdc-data-table__table" aria-label="Covid-19 Cases">
                 <thead>
@@ -103,6 +110,9 @@
               </table>
             </div>
         </div>
+        <button class="mdc-button graph-button mdc-button--raised"/>
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label">Graph</span>
     </div>
     
     <!--Allows the user to add new countries to be tracked-->
@@ -146,13 +156,15 @@
         <h1 class="title graph-title">Graphs</h1>
         <div id="chart_div" style = "width: 550px; height: 400px; margin: 0 auto"></div>
         <div class="type-select-div">
-        <label class="type-label" for="country">Select info:</label>
-        <input id="type-selector" list = "type" oninput="drawChart()">
-            <datalist id="type" name="type">
-                  <option class="type-option" value="confirmed">confirmed</option>
-                  <option class="type-option" value="recovered">recovered</option>
-                  <option class="type-option" value="deaths">deaths</option>
-            </datalist><br/>  
+            <label class="type-label" for="country">Select info:</label>
+            <select id="type-selector">
+                    <option class="type-option" value="confirmed">confirmed</option>
+                    <option class="type-option" value="recovered">recovered</option>
+                    <option class="type-option" value="deaths">deaths</option>
+            </select>
+            <button class="mdc-button type-button mdc-button--raised"/>
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Re-Graph</span>
         </div>
     </div>
       
@@ -165,7 +177,8 @@
     mdc.ripple.MDCRipple.attachTo(document.querySelector('.remove-button'));
     mdc.ripple.MDCRipple.attachTo(document.querySelector('.clear-button'));
     mdc.ripple.MDCRipple.attachTo(document.querySelector('.data-button'));
-
+    mdc.ripple.MDCRipple.attachTo(document.querySelector('.type-button'));
+    mdc.ripple.MDCRipple.attachTo(document.querySelector('.graph-button'));  
       
     mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('header.mdc-top-app-bar'));
 

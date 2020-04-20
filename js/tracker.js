@@ -1,6 +1,8 @@
 
 
 let trackedNations = []; 
+let selectionItem = document.querySelector("#type-selector");
+selectionItem.value = "confirmed";
 
 let refresh = ()=>{
       //example of the API call
@@ -15,9 +17,9 @@ let refresh = ()=>{
     
       
 //reload the json data if the refresh button is pressed
-document.querySelector("#refresh").addEventListener("click", (e)=>{
-  refresh();
-}); 
+//document.querySelector("#refresh").addEventListener("click", (e)=>{
+//  refresh();
+//}); 
 
 let currScene = "Home"; //always start on the home screen
 let changeScene = (e)=>{
@@ -202,6 +204,20 @@ document.querySelectorAll("aside.mdc-drawer a.mdc-list-item").forEach(item=>{
        });
     });
 
+//adds commas to really long numbers
+let addCommas=(num)=>{
+    let str = num.toString();
+    let pos = str.length;
+
+    while(num >= 1000){
+        num = num / 1000; 
+        pos -= 3; 
+        str = [str.slice(0,pos) + "," + str.slice(pos)].join('');
+    }
+
+    return str; 
+}
+
 let allData = null;
 fetch("https://pomber.github.io/covid19/timeseries.json")
   .then(response => response.json())
@@ -209,13 +225,23 @@ fetch("https://pomber.github.io/covid19/timeseries.json")
     allData = data;
     let tempKeys = Object.keys(allData); 
     let menu = document.querySelector("#country");
+    let totalConfirmed = 0; 
+    let totalDeaths = 0; 
+    let totalRecovered = 0; 
     for(let key of tempKeys){
+        //sum up the totals
+        totalConfirmed += allData[key][allData[key].length -1]["confirmed"];
+        totalDeaths += allData[key][allData[key].length -1]["deaths"];
+        totalRecovered += allData[key][allData[key].length -1]["recovered"];
         let clone = document.querySelector(".option-template").cloneNode(true);
         clone.value=key; 
         clone.textContent=key;
         clone.classList.remove("option-template"); 
         menu.appendChild(clone);
     }
+    document.querySelector("#confirmed-display").textContent += addCommas(totalConfirmed);
+    document.querySelector("#recovered-display").textContent += addCommas(totalRecovered); 
+    document.querySelector("#deaths-display").textContent += addCommas(totalDeaths);
 });
 
 function getRandomColor() {
@@ -227,12 +253,27 @@ function getRandomColor() {
     return color;
 }    
 
+document.querySelector(".type-button").addEventListener("click", (e)=>{
+    drawChart();
+});
 
+document.querySelector(".graph-button").addEventListener("click", (e)=>{
+    if(trackedNations.length == 0){
+        alert("You must enter tracked countries before graphing");
+        return; 
+    }
+    changeScene("Charts");
+    selectionItem.value = "confirmed"; 
+    drawChart();
+});
 function drawChart() {
+            if(trackedNations.length == 0){
+                alert("You must enter data before charting it");
+                return;
+            }
             // Define the chart to be drawn.
             var data = new google.visualization.DataTable();
-            let option = document.querySelector("#type-selector");
-            console.log(option.value);
+            
             data.addColumn('string', 'date');
             for(let c of trackedNations){
                 data.addColumn('number', c);
@@ -242,6 +283,9 @@ function drawChart() {
             let baseLine = allData[trackedNations[0]];
             let i = 0; 
             let stat = "confirmed";
+            if(selectionItem.value != null){ 
+                stat = selectionItem.value;
+            }
             for(let dates of baseLine){
                 let row = []; 
                 row.push(dates.date);
@@ -270,3 +314,5 @@ function drawChart() {
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
             chart.draw(data, options);
 }
+
+changeScene("Home");
