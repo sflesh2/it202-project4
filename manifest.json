@@ -1,0 +1,16 @@
+{
+    "name": "Covid-19 tracker",
+    "short_name" : "PWA",
+    "start_url": "https://sflesh2.github.io/it202-project4/",
+    "scope" : "./",
+    "icons": [
+        {
+            "src": "./favicon.ico",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffee00",
+    "background_color": "#ffee00",
+    "display": "standalone"
+}
